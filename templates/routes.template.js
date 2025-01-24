@@ -3,7 +3,9 @@ export const routesTemplate = () =>
 import express from "express";
 import { getExample } from "../controllers/example.controller.js";
 
-export const exampleRouter = express.Router();
+const router = express.Router();
 
-exampleRouter.get("/", getExample);
+router.get("/", getExample);
+
+export default router;
 `.trim();
