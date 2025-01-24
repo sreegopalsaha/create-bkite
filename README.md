@@ -1,4 +1,4 @@
-# create-bkite
+# create-bkite <a href="https://npmjs.com/package/create-bkite"><img src="https://img.shields.io/npm/v/create-bkite" alt="npm package"></a>
 ## Scaffolding Your Backend Project with create-bkite
 
 `create-bkite` is a CLI tool designed to simplify the setup of Express.js backend projects. It generates a well-structured backend environment with essential configurations, files, and folders, allowing you to kickstart your development process effortlessly.
