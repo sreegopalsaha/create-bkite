@@ -1,7 +1,7 @@
 {
   "name": "create-bkite",
   "version": "0.0.1",
-  "description": "",
+  "description": "A CLI tool for scaffolding Express.js backend projects with a well-structured project setup.",
   "type": "module",
   "main": "bin/index.js",
   "bin": "bin/index.js",
@@ -9,8 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Sree Gopal Saha",
+  "license": "MIT",
   "dependencies": {
     "prompts": "^2.4.2"
   },
