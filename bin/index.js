@@ -10,8 +10,8 @@ const promptProjectDetails = async () => {
   const { projectName } = await prompts({
     type: "text",
     name: "projectName",
-    message: "Enter your project name:",
-    initial: "my-backend-app",
+    message: "Project name:",
+    initial: "bkite-project",
     validate: (input) => input.trim() !== "" || "Project name cannot be empty.",
   });
   const sanitizedProjectName = sanitizeProjectName(projectName);
