@@ -1,4 +1,5 @@
 # create-bkite <a href="https://npmjs.com/package/create-bkite"><img src="https://img.shields.io/npm/v/create-bkite" alt="npm package"></a>
+
 ## Scaffolding Your Backend Project with create-bkite
 
 `create-bkite` is a CLI tool designed to simplify the setup of Express.js backend projects. It generates a well-structured backend environment with essential configurations, files, and folders, allowing you to kickstart your development process effortlessly.
@@ -66,25 +67,28 @@ This starts your server at `http://localhost:3000` (default port).
 ## Extending Your Project
 
 ### Adding Routes
+
 Add new route files in `src/routes/`. For example:
 
 ```javascript
 // src/routes/newExample.routes.js
-import express from 'express';
+import express from "express";
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Hello from the new route!');
+router.get("/", (req, res) => {
+  res.send("Hello from the new route!");
 });
 
 export default router;
 ```
 
 ### Middleware
+
 Add custom middleware in `src/middlewares/`.
 
 ### Database Configuration
+
 Edit `src/configs/db.config.js` to set up your database connection.
 
 ## License

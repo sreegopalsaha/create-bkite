@@ -1,6 +1,6 @@
 {
   "name": "create-bkite",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A CLI tool for scaffolding Express.js backend projects with a well-structured project setup.",
   "type": "module",
   "main": "bin/index.js",
@@ -18,7 +18,7 @@
     "prettier": "^3.4.2"
   },
   "repository": {
-  "type": "git",
-  "url": "https://github.com/sreegopalsaha/create-bkite.git"
+    "type": "git",
+    "url": "https://github.com/sreegopalsaha/create-bkite.git"
   }
 }
