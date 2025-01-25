@@ -21,7 +21,7 @@ To get started with your backend project, follow these steps:
 
 2. **Start the development server**:
    \`\`\`
-   npm run dev
+   npm run start
    \`\`\`
 
 ## File Structure
