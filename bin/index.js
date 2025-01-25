@@ -5,39 +5,36 @@ import { sanitizeProjectName } from "../utils/sanitizeProjectName.js";
 import { createDirectory } from "../utils/createDirectory.js";
 import { createFile } from "../utils/createFile.js";
 import * as templates from "../templates/index.js";
+import { isValidPackageName } from "../utils/isValidPackageName.js";
 
-const promptProjectDetails = async () => {
-  const { projectName } = await prompts({
+const args = process.argv.slice(2);
+const currentDir = process.cwd();
+
+const promptProjectName = async () => {
+  const res = await prompts({
     type: "text",
     name: "projectName",
     message: "Project name:",
     initial: "bkite-project",
     validate: (input) => input.trim() !== "" || "Project name cannot be empty.",
   });
-  const sanitizedProjectName = sanitizeProjectName(projectName);
-  const { packageName } = await prompts({
+  const sanitizedProjectName = sanitizeProjectName(res.projectName);
+  return sanitizedProjectName;
+};
+
+const promptPackageName = async (initialValue) => {
+  const res = await prompts({
     type: "text",
     name: "packageName",
     message: "Enter your package name:",
-    initial: sanitizedProjectName,
-    validate: (input) => {
-      const npmPackageNameRegex =
-        /^(?:@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/;
-      if (!input.trim()) return "Package name cannot be empty.";
-      if (!npmPackageNameRegex.test(input))
-        return "Invalid package name. Follow npm naming rules.";
-      return true;
-    },
+    initial: initialValue,
+    validate: (input) => isValidPackageName(input),
   });
 
-  return { projectName, packageName };
+  return res.packageName;
 };
 
-const startProject = async () => {
-  const { projectName, packageName } = await promptProjectDetails();
-  const currentDir = process.cwd();
-  const projectDir = path.join(currentDir, projectName);
-
+const startProject = async (projectName, packageName, projectDir) => {
   const structure = [
     { type: "dir", path: "src/configs" },
     { type: "dir", path: "src/controllers" },
@@ -116,13 +113,40 @@ const startProject = async () => {
 
   console.log("\nProject setup complete!");
   console.log(`\nNext steps:`);
-  console.log(`  1. Navigate to the project directory:`);
-  console.log(`     cd ${projectName}`);
+
+  if (currentDir !== projectDir) {
+    console.log(`  1. Navigate to the project directory:`);
+    console.log(`     cd ${projectName}`);
+  }
   console.log(`  2. Install dependencies:`);
   console.log(`     npm install`);
   console.log(`  3. Start the project:`);
   console.log(`     npm run start`);
   console.log(`\nHappy coding! 🎉`);
-  };
+};
 
-startProject();
+if (args.length === 0) {
+  const projectName = await promptProjectName();
+  const packageName = await promptPackageName(projectName);
+  const projectDir = path.join(currentDir, projectName);
+  startProject(projectName, packageName, projectDir);
+}
+
+if (args[0] === ".") {
+  const projectDir = currentDir;
+  const projectName = sanitizeProjectName(path.basename(currentDir));
+  const packageName = await promptPackageName(projectName);
+  startProject(projectName, packageName, projectDir);
+}
+
+if (args[0] && !(args[0] === ".")) {
+  let packageName;
+  const projectName = sanitizeProjectName(args[0]);
+  if (!isValidPackageName(projectName)) {
+    packageName = await promptPackageName();
+  } else {
+    packageName = projectName;
+  }
+  const projectDir = path.join(currentDir, projectName);
+  startProject(projectName, packageName, projectDir);
+}

@@ -1,23 +1,40 @@
 # create-bkite <a href="https://npmjs.com/package/create-bkite"><img src="https://img.shields.io/npm/v/create-bkite" alt="npm package"></a>
-## Scaffolding Your Backend Project with create-bkite
 
-`create-bkite` is a CLI tool designed to simplify the setup of Express.js backend projects. It generates a well-structured backend environment with essential configurations, files, and folders, allowing you to kickstart your development process effortlessly.
+# Scaffolding Your Backend Project with **create-bkite**
 
-### Installation and Usage
+**create-bkite** is a CLI tool designed to streamline the setup of **Express.js** backend projects. It scaffolds a clean and well-organized backend environment, enabling you to start coding your application immediately.
 
-To create a new project, run the following command:
+---
 
-With NPM:
+## Installation and Usage
+
+Run the following command to scaffold a new backend project:
 
 ```bash
 npm create bkite@latest
 ```
 
-Then follow the prompts to set up your project!
+### Specifying Project Name
+
+You can directly specify the project name you want to use via additional command line options. For example:
+
+- To create a project in a folder named `my-backend-app`:  
+  ```bash
+  npm create bkite@latest my-backend-app
+  ```
+
+- To scaffold a project in the current directory:  
+  ```bash
+  npm create bkite@latest .
+  ```
+
+Follow the interactive prompts to complete the setup.
+
+---
 
 ## Default Project Structure
 
-The generated project will have the following structure:
+Your new project will include the following structure:
 
 ```
 my-backend-app/
@@ -43,30 +60,41 @@ my-backend-app/
 ├── README.md
 ```
 
-### Running Your Backend Server
+---
 
-Once your project is set up, navigate to the project directory and run the following commands:
+## Running Your Backend Server
 
-```bash
-cd my-backend-app
-npm install
-npm run start
-```
+After scaffolding your project, navigate to the project directory and run the following commands:
 
-This starts your server at `http://localhost:3000` (default port).
+1. Install dependencies:  
+   ```bash
+   npm install
+   ```
+
+2. Start the server:  
+   ```bash
+   npm run start
+   ```
+
+By default, the server will start at **http://localhost:3000**.
+
+---
 
 ## Features
 
-- **Interactive Setup**: Guides you through project initialization with prompts.
-- **Organized Structure**: Creates a scalable and maintainable folder structure.
-- **CORS Support**: Configures Cross-Origin Resource Sharing (CORS) out of the box.
-- **Error Handling**: Includes a global error handler and utility classes for standardized error and response handling.
-- **Environment Configuration**: Generates a `.env` file for managing environment variables.
+- **Interactive Setup**: Guides you through project initialization with prompts.  
+- **Custom Commands**: Flexible options to scaffold in a specified folder or the current directory.  
+- **Clean Structure**: Provides a scalable and maintainable folder layout.  
+- **CORS Support**: Built-in Cross-Origin Resource Sharing (CORS) configuration.  
+- **Error Handling**: Includes a global error handler and utility classes for standardized responses.  
+- **Environment Configuration**: Prepares a `.env` file for easy environment variable management.
+
+---
 
 ## Extending Your Project
 
 ### Adding Routes
-Add new route files in `src/routes/`. For example:
+To add new routes, create files in the `src/routes/` directory. Example:
 
 ```javascript
 // src/routes/newExample.routes.js
@@ -82,15 +110,24 @@ export default router;
 ```
 
 ### Middleware
-Add custom middleware in `src/middlewares/`.
+Add custom middleware in the `src/middlewares/` directory.
 
 ### Database Configuration
-Edit `src/configs/db.config.js` to set up your database connection.
-
-## License
-
-`create-bkite` is licensed under the [MIT License](LICENSE).
+Edit `src/configs/db.config.js` to configure your database connection.
 
 ---
 
-Start building your backend with ease using `create-bkite`! 🚀
+## License
+
+**create-bkite** is licensed under the **MIT License**.
+
+---
+
+## Contributions
+
+This project is open for contributions. Feel free to:
+
+- Request a pull and open new issues.
+- Connect with me on [LinkedIn](https://www.linkedin.com/in/sreegopalsaha/) to communicate and collaborate.
+
+Start building your backend with ease using **create-bkite**! 🚀
